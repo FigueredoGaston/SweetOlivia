@@ -7,18 +7,24 @@
     list-style: none;
 }
 
-body{
+/*Declaración de ciertos tipos de colores en común a varias clases*/
+.color_body{background: #FFFAFA; color: #000;}
+.bg_1{background: #fff;}
+.bg_2{background: #000;}
+.bg_footer{background-color: rgba(0, 0, 0, .2);}
+
+.color_hover:hover, .color_hover:focus{color: tomato; text-decoration: none; transition: color 0.3s ease;}
+
+.my_body{
     margin: 0px;
     background-repeat: no-repeat;
     display: flex;
-    background: #FFFAFA;
     min-height:100vh;
     flex-direction: column;
 }
 
 /*Comienzo del header*/
 .header_menu{
-    background: #fff;
     padding: 4vmin;
     position: sticky;
     top: 0;
@@ -54,7 +60,7 @@ body{
                 color: #000;
             }
 
-        .nav{
+        .nav_menu{
             flex: 1 1 auto;
             display: block;
             order: 1;
@@ -81,13 +87,12 @@ body{
             }
 
             /*Acá genero la transición de las tres barras a la cruz*/
-            .nav span{
+            .span_menu{
                 display: block;
                 width: 33px;
                 height: 4px;
                 margin-bottom: 5px;
                 position: relative;
-                background: #000;
                 border-radius: 3px;
                 z-index: 1;
                 transform-origin: 4px 0px;
@@ -96,11 +101,11 @@ body{
                         opacity 0.55s ease;
                 }
 
-                .nav span:first-child{
+                .span_menu:first-child{
                 transform-origin: 0% 0%;
                 }
 
-                .nav span:nth-last-child(2)
+                .span_menu:nth-last-child(2)
                 {
                 transform-origin: 0% 100%;
                 }
@@ -128,7 +133,6 @@ body{
             margin: -75px 0 0 -50px;
             padding: 40px;
             padding-top: 130px;
-            background: #fff;
             list-style-type: none;
             transform-origin: 0% 0%;
             transform: translate(-100%, 0);
@@ -169,11 +173,6 @@ body{
                 padding: 0 5px;
             }
 
-            .a_menu_hover:hover,
-            .a_menu_hover:focus{
-                color: tomato;
-                transition: color 0.3s ease;
-            }
 /*Hasta acá el header*/
 
 /*Este es el menú fijo de las redes sociales*/
@@ -186,10 +185,8 @@ body{
     right: 20px;
     z-index: 3;
 }
-.redes a, .btn_plus label{
+.a_redes, .label_redes{
     display: block;
-    text-decoration: none;
-    background: #000;
     color: #fff;
     width: 55px;
     height: 55px;
@@ -199,7 +196,7 @@ body{
     box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
     transition: all 500ms ease;
 }
-.redes a:hover{
+.a_redes:hover{
     background: #fff;
     transition: background 0.3s ease;
     color: tomato;
@@ -215,9 +212,8 @@ body{
     opacity: 1;
     visibility: visible;
 }
-.btn_plus label{
+.label_redes{
     cursor: pointer;
-    background: #000;
     font-size: 23px;
 }
 .input_social:checked ~ .btn_plus label{
@@ -281,10 +277,6 @@ body{
     }
 /*Hasta acá el cuerpo principal de la página index*/
 
-/*Empieza el cuerpo principal de la página en construcción*/
-
-/*Hasta acá el cuerpo principal de la página index*/
-
 /*Empieza el cuerpo principal de las páginas de prendas*/
 .item_shop{
     max-height: 300px;
@@ -337,6 +329,13 @@ body{
 .span_about{
     font-size: 1em;
 }
+
+.carousel-item{
+    width: 100%;
+    height: 400px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 /*Hasta acá el cuerpo principal de la página about*/
 
 /*Empieza el cuerpo principal de la página contacto*/
@@ -350,41 +349,6 @@ body{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
 }
-/* 
-.label_contact{
-    display: block;
-}
-
-.p_contact{
-    margin: 0;
-    padding: 1em;
-}
-
-.btn_contact,
-.input_contact,
-.textarea_contact{
-    width: 100%;
-    padding: .7em;
-    border: none;
-    outline: 0;
-    resize: none;
-    border-bottom: 1px solid #000;
-}
-
-.btn_contact {
-    border: 0;
-    text-transform: uppercase;
-    padding: 1em;
-}
-
-.btn_contact:hover,
-.btn_contact:focus {
-    color: #fff;
-    outline: 0;
-}
- */
-
-.bgcolor-4 { background: #2f3238; color: #fff; }
 
 .content {
 	font-size: 150%;
@@ -432,7 +396,6 @@ body{
 
 .input__label {
 	display: inline-block;
-	float: right;
 	padding: 0 1em;
 	width: 40%;
 	color: #6a7989;
@@ -580,8 +543,6 @@ body{
 
 /*Acá comineza el footer de la página*/
 .footer{
-    background-color: rgba(0, 0, 0, .2);
-    color: #FFFAFA;
     padding: 2em;
     padding-bottom: 2px;
 }
@@ -594,15 +555,13 @@ body{
     }
 
     .p_work{
-        color: #000;
         font-size: 10px;
         text-transform: capitalize;
     }
     .powered{
         height: 30px;
-        display: flex;
-        align-items: center;
         border-top: 1px solid rgba(255, 255, 255, .5);
+        display: flex;
     }
     .a_powered{
         font-size: 10px;
@@ -610,10 +569,15 @@ body{
         padding: 0 5px;
     }
 
-    .item_powered{
-        display: flex;
-        flex-direction: column;
+    .powered_item{
+        width: 150px;
     }
+    .powered_redes{
+        display:grid;
+        grid-template-columns: 15px 15px 15px;
+        padding-top: 10px;
+    }
+
 /*Hasta acá el footer de la página*/
 
 /*Bloque con las medias querry*/

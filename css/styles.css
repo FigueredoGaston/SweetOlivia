@@ -27,6 +27,7 @@
 /*Este es el menú fijo de las redes sociales*/
 .input_social{
     display: none;
+    visibility: hidden;
 }
 .social{
     position: fixed;
